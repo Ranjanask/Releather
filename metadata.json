@@ -1,0 +1,13 @@
+{
+  "name": "ReLeather",
+  "description": "Sustainable leather reuse and recycling platform. AI-powered product analysis, marketplace for pre-owned leather, and recycling tracking.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "AI-powered product analysis",
+    "Secure marketplace",
+    "Recycling tracking",
+    "Sustainability dashboard"
+  ]
+}

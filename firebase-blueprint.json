@@ -1,0 +1,69 @@
+{
+  "entities": {
+    "User": {
+      "title": "User Profile",
+      "description": "User account information and sustainability metrics.",
+      "type": "object",
+      "properties": {
+        "userId": { "type": "string" },
+        "displayName": { "type": "string" },
+        "email": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "itemsRecycled": { "type": "number" },
+        "co2Saved": { "type": "number" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["userId", "email"]
+    },
+    "Product": {
+      "title": "Leather Product",
+      "description": "A leather item listed for sale or recycling.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "imageUrl": { "type": "string" },
+        "category": { "type": "string" },
+        "brand": { "type": "string" },
+        "condition": { "type": "string", "enum": ["New", "Good", "Worn", "Damaged"] },
+        "price": { "type": "number" },
+        "suggestedPrice": { "type": "number" },
+        "status": { "type": "string", "enum": ["available", "sold", "recycled", "pending-recycling"] },
+        "sellerId": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["title", "imageUrl", "categoryId", "sellerId"]
+    },
+    "Order": {
+      "title": "Marketplace Order",
+      "description": "A transaction record for a product.",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "productId": { "type": "string" },
+        "buyerId": { "type": "string" },
+        "sellerId": { "type": "string" },
+        "price": { "type": "number" },
+        "status": { "type": "string", "enum": ["completed", "cancelled"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["productId", "buyerId", "sellerId", "price"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "User",
+      "description": "User profiles and stats."
+    },
+    "/products/{productId}": {
+      "schema": "Product",
+      "description": "Marketplace listings."
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Transaction history."
+    }
+  }
+}
